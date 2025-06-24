@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro</title>
+    <link href="cadastro.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <!-- FORMULÁRIO DE NOVO CADASTRO -->
+    <div class="formContainer" id="formCadastro">
+        <h1 class="title">Cadastro de Paciente</h1>
+        <form method="post" th:action="@{/cadastro}">
+            <label class="labels" for="nomePaciente">Insira seu nome completo:</label>
+            <input class="inputs" id="nomePaciente" name="nomePaciente" required type="text">
+
+            <label class="labels" for="cpfPaciente">Insira seu CPF:</label>
+            <input class="inputs" id="cpfPaciente" name="cpfPaciente" required type="text">
+
+            <label class="labels" for="sintomasPaciente">Insira seus sintomas:</label>
+            <textarea class="inputs" id="sintomasPaciente" name="sintomasPaciente" required></textarea>
+
+            <div class="buttons">
+                <button id="btnCadastro" type="submit">Cadastrar</button>
+                <a href="/consulta" id="btnEntrar">Entrar</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

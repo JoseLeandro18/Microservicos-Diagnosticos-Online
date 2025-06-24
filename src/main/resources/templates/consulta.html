@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Consulta</title>
+    <link href="consulta.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1 class="title">Consulta Médica</h1>
+
+    <div class="formContainer">
+        <label class="labels" for="idPaciente">ID do paciente:</label>
+        <input class="inputs" id="idPaciente" readonly th:value="${paciente.id}" type="text">
+
+        <h2>Diagnóstico da IA:</h2>
+        <label class="labels">
+            <textarea class="inputs" readonly th:text="${diagnostico}"></textarea>
+        </label>
+
+        <div class="buttons">
+            <a href="/cadastro" id="btnCadastro">Cadastrar-se</a>
+            <a href="/consulta" id="btnConsulta">Consulta Online</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
