@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Área Médico</title>
+    <link href="consultaMedico.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1 class="title">Área Médico</h1>
+
+    <div class="formContainer">
+        <h3>Id do paciente:</h3>
+        <div class="btns">
+            <textarea class="inputs" readonly th:text="${idPaciente}">9</textarea>
+            <a class="btn" href="/">Contato</a>
+        </div>
+
+        <h3>Sintomas Paciente:</h3>
+
+        <div class="btns">
+            <textarea class="inputs" readonly th:text="${sintomasPaciente}">fafafa</textarea>
+            <a class="btn" href="/">Enviar receita</a>
+        </div>
+
+        <h3>Diagnóstico da IA:</h3>
+        <div class="btns">
+            <textarea class="inputs" readonly th:text="${diagnosticoPaciente}">fafa</textarea>
+            <a class="btn" href="/">Deletar</a>
+        </div>
+
+    </div>
+
+    <div class="buttons">
+        <a href="/login-medico" id="btnCadastro">Voltar</a>
+        <a href="/cadastro-medico" id="btnConsulta">Cadastrar-se</a>
+    </div>
+</div>
+</body>
+</html>

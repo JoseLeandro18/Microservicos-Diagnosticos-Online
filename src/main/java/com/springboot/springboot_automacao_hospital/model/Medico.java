@@ -6,21 +6,21 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Entity(name = "pacientes")
+@Entity(name = "medicos")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Paciente {
+public class Medico {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private String nomePaciente;
+    private String nomeMedico;
 
     @Column(nullable = false)
-    private String cpfPaciente;
+    private String cpfMedico;
 
     @Column(nullable = false)
-    private String sintomasPaciente;
+    private Long codigoMedico;
 }

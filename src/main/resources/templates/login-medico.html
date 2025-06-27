@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Médico</title>
+    <link href="login.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <!-- FORMULÁRIO DE CONSULTA PARA CADASTRADOS -->
+    <div class="formContainer">
+        <h1 class="title">Login de Médico</h1>
+        <form method="post" th:action="@{/consulta-medico}">
+            <!-- NOME -->
+            <label class="labels" for="nomeMedico">Insira seu nome completo:</label>
+            <input class="inputs" id="nomeMedico" name="nomeMedico" required type="text">
+
+            <!-- CPF -->
+            <label class="labels" for="cpfMedico">Insira seu CPF:</label>
+            <input class="inputs" id="cpfMedico" name="cpfMedico" required type="text">
+
+            <!-- CODIGO MEDICO -->
+            <label class="labels" for="idMedico">Insira seu ID:</label>
+            <input class="inputs" id="idMedico" name="idMedico" required type="text">
+
+            <!-- ID PACIENTE-->
+            <label class="labels" for="idPaciente">ID do seu paciente:</label>
+            <input class="inputs" id="idPaciente" name="idPaciente" required type="text">
+
+            <div class="buttons">
+                <button id="btnConsulta" type="submit">Área médico</button>
+                <a href="/cadastro-medico" id="btnVoltar">Voltar</a>
+            </div>
+        </form>
+    </div>
+
+    <div class="erroContainer">
+        <!-- ERRO CASO MEDICO OU PACIENTE NÃO SEJA ENCONTRADO -->
+        <p style="color: red;" th:if="${erro}" th:text="${erro}"></p>
+    </div>
+</div>
+
+</body>
+</html>

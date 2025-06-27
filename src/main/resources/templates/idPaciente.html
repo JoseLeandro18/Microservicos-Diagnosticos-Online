@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Seu ID</title>
+    <link href="id.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1 class="title">Cadastro realizado com sucesso!</h1>
+    <form class="formContainer">
+        <div class="mensagens">
+            <p class="labels">Seu código de acesso (ID): <strong th:text="${paciente.id}"></strong></p>
+            <p class="labels" id="aviso">Guarde esse código. Você precisará dele para acessar sua consulta online.</p>
+        </div>
+        <div class="buttons">
+            <a href="/login-paciente" id="btnEntrar">Entrar</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>

@@ -10,7 +10,7 @@
     <!-- FORMULÁRIO DE CONSULTA PARA CADASTRADOS -->
     <div class="formContainer">
         <h1 class="title">Login de Pacientes</h1>
-        <form method="post" th:action="@{/consulta}">
+        <form method="post" th:action="@{/consulta-paciente}">
             <!-- NOME -->
             <label class="labels" for="nomeConsulta">Insira seu nome completo:</label>
             <input class="inputs" id="nomeConsulta" name="nomePaciente" required type="text">
@@ -25,14 +25,14 @@
 
             <div class="buttons">
                 <button id="btnConsulta" type="submit">Consulta Online</button>
-                <a href="/cadastro" id="btnVoltar">Voltar</a>
+                <a href="/cadastro-paciente" id="btnVoltar">Voltar</a>
             </div>
         </form>
     </div>
 
     <div class="erroContainer">
         <!-- ERRO CASO PACIENTE NÃO SEJA ENCONTRADO -->
-        <p style="color: red;" th:if="${erro}" th:text="${erro}">Paciente não encontrado. Verifique os dados.</p>
+        <p style="color: red;" th:if="${erro}" th:text="${erro}"></p>
     </div>
 </div>
 

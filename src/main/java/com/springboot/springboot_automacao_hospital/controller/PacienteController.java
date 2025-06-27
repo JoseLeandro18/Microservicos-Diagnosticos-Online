@@ -21,26 +21,26 @@ public class PacienteController {
     @Autowired
     private IAService iaService;
 
-    @GetMapping("/cadastro")
+    @GetMapping("/cadastro-paciente")
     public String mostrarFormularioCadastro() {
-        return "cadastro";
+        return "cadastro-paciente";
     }
 
-    @PostMapping("/cadastro") // <- Esse caminho é ativado quando o formulário envia para /pacientes com POST
+    @PostMapping("/cadastro-paciente") // <- Esse caminho é ativado quando o formulário envia para /pacientes com POST
     public String salvarPaciente(Paciente paciente, Model model) {
         pacienteRepository.save(paciente); // <- salva o paciente no banco
 
         model.addAttribute("idPaciente", paciente.getId()); // envia o id para a página
 
-        return "idForm";
+        return "idPaciente";
     }
 
-    @GetMapping("/consulta")
+    @GetMapping("/login-paciente")
     public String mostrarFormularioConsulta() {
-        return "login";
+        return "login-paciente";
     }
 
-    @PostMapping("/consulta")
+    @PostMapping("/consulta-paciente")
     public String consultarPaciente(@RequestParam String nomePaciente,
                                     @RequestParam String cpfPaciente,
                                     @RequestParam Long idPaciente,
@@ -56,12 +56,12 @@ public class PacienteController {
                 String diagnostico = iaService.obterDiagnostico(paciente.getSintomasPaciente(), paciente);
                 model.addAttribute("paciente", paciente);
                 model.addAttribute("diagnostico", diagnostico);
-                return "consulta";
+                return "consulta-paciente";
             }
         }
 
         model.addAttribute("erro", "Paciente não encontrado. Verifique os dados.");
-        return "login";
+        return "login-paciente";
     }
 
 

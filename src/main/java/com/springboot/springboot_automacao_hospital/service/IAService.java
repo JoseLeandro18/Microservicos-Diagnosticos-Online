@@ -1,56 +1,59 @@
 package com.springboot.springboot_automacao_hospital.service;
 
 import com.springboot.springboot_automacao_hospital.model.Paciente;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 @Service
 public class IAService {
 
-    private static final String API_KEY = "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";
-    private static final String URL = "https://openrouter.ai/api/v1/chat/completions";
+    private final String API_KEY = "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";
+    private final String API_URL = "https://openrouter.ai/api/v1/chat/completions";
 
-    public String obterDiagnostico(String sintomas, Paciente paciente) {
+    public String obterDiagnostico(String sintomasPaciente, Paciente paciente) {
         RestTemplate restTemplate = new RestTemplate();
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.set("Authorization", "Bearer " + API_KEY);
+        headers.setBearerAuth(API_KEY);
+        headers.add("HTTP-Referer", "http://localhost:8080"); // importante para autorização
+        headers.add("X-Title", "automacao-hospital-java");
 
-        // Construindo a mensagem
-        Map<String, Object> mensagemUsuario = new HashMap<>();
-        mensagemUsuario.put("role", "user");
-        mensagemUsuario.put("content", "Olá, sou o paciente " + paciente.getNomePaciente() +
-                " e meus sintomas são: " + sintomas +
-                ". Por favor, forneça um diagnóstico e recomende um especialista resumidamente por favor.");
+        // Montando o corpo da requisição como JSON
+        JSONObject json = new JSONObject();
+        json.put("model", "mistralai/mistral-7b-instruct");
 
-        List<Map<String, Object>> mensagens = new ArrayList<>();
-        mensagens.add(mensagemUsuario);
+        JSONArray messages = new JSONArray();
+        messages.put(new JSONObject().put("role", "system").put("content", "Você é um médico que irá diagnosticar doenças baseado nos sintomas do paciente e indicar um médico para o paciente poder realizar a consulta pessoalmente."));
+        messages.put(new JSONObject().put("role", "user").put("content", "Olá meu nome é: " + paciente.getNomePaciente() + " e meus sintomas são: " + sintomasPaciente));
 
-        Map<String, Object> body = new HashMap<>();
-        body.put("model", "openai/gpt-3.5-turbo"); // ou outro modelo compatível da OpenRouter
-        body.put("messages", mensagens);
+        json.put("messages", messages);
 
-        HttpEntity<Map<String, Object>> request = new HttpEntity<>(body, headers);
+        HttpEntity<String> request = new HttpEntity<>(json.toString(), headers);
 
         try {
-            ResponseEntity<Map> response = restTemplate.exchange(
-                    URL,
+            ResponseEntity<String> response = restTemplate.exchange(
+                    API_URL,
                     HttpMethod.POST,
                     request,
-                    Map.class
+                    String.class
             );
 
-            Map<String, Object> resposta = (Map<String, Object>) ((List<?>) response.getBody().get("choices")).get(0);
-            Map<String, Object> message = (Map<String, Object>) resposta.get("message");
+            String responseBody = response.getBody();
 
-            return (String) message.get("content");
+            // Extraindo a resposta da IA
+            JSONObject jsonResponse = new JSONObject(responseBody);
+            JSONArray choices = jsonResponse.getJSONArray("choices");
+
+            if (choices.length() > 0) {
+                JSONObject message = choices.getJSONObject(0).getJSONObject("message");
+                return message.getString("content");
+            } else {
+                return "A IA não retornou uma resposta válida.";
+            }
 
         } catch (Exception e) {
             return "Erro ao obter diagnóstico da IA: " + e.getMessage();

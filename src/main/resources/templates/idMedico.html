@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Seu ID</title>
-    <link href="idForm.css" rel="stylesheet">
+    <link href="id.css" rel="stylesheet">
 </head>
 <body>
 <div class="container">
     <h1 class="title">Cadastro realizado com sucesso!</h1>
     <form class="formContainer">
         <div class="mensagens">
-            <p class="labels">Seu código de acesso (ID): <strong th:text="${paciente.id}">8</strong></p>
-            <p class="labels" id="aviso">Guarde esse código. Você precisará dele para acessar sua consulta online.</p>
+            <p class="labels">Seu código de acesso (ID): <strong th:text="${medico.id}"></strong></p>
+            <p class="labels" id="aviso">Guarde esse código. Você precisará dele para acessar a área de consulta
+                online.</p>
         </div>
         <div class="buttons">
-            <a href="/consulta" id="btnEntrar">Entrar</a>
+            <a href="/login-medico" id="btnEntrar">Entrar</a>
         </div>
     </form>
 </div>

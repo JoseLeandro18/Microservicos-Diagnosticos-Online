@@ -10,7 +10,7 @@
     <!-- FORMULÁRIO DE NOVO CADASTRO -->
     <div class="formContainer" id="formCadastro">
         <h1 class="title">Cadastro de Paciente</h1>
-        <form method="post" th:action="@{/cadastro}">
+        <form method="post" th:action="@{/cadastro-paciente}">
             <label class="labels" for="nomePaciente">Insira seu nome completo:</label>
             <input class="inputs" id="nomePaciente" name="nomePaciente" required type="text">
 
@@ -22,7 +22,7 @@
 
             <div class="buttons">
                 <button id="btnCadastro" type="submit">Cadastrar</button>
-                <a href="/consulta" id="btnEntrar">Entrar</a>
+                <a href="/login-paciente" id="btnEntrar">Entrar</a>
             </div>
         </form>
     </div>
