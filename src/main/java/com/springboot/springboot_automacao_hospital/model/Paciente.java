@@ -19,7 +19,19 @@ public class Paciente {
     private String nomePaciente;
 
     @Column(nullable = false)
+    private String emailPaciente;
+
+    @Column(nullable = false)
+    private String telefonePaciente;
+
+    @Column(nullable = false)
     private String cpfPaciente;
+
+    @Column(nullable = false)
+    private String sexoPaciente;
+
+    @Column(nullable = false)
+    private Integer idadePaciente;
 
     @Column(nullable = false)
     private String sintomasPaciente;

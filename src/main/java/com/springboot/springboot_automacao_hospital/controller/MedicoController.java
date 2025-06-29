@@ -40,7 +40,7 @@ public class MedicoController {
     public String salvarMedico(Medico medico, Model model) {
         medicoRepository.save(medico);
 
-        model.addAttribute("idMedico", medico.getCodigoMedico());
+        model.addAttribute("idMedico", medico.getId());
         return "idMedico";
     }
 
@@ -50,8 +50,7 @@ public class MedicoController {
     }
 
     @PostMapping("/consulta-medico")
-    public String consultarPaciente(@RequestParam String nomeMedico,
-                                    @RequestParam String cpfMedico,
+    public String consultarPaciente(@RequestParam String cpfMedico,
                                     @RequestParam Long idMedico,
                                     @RequestParam Long idPaciente,
                                     Model model) {
@@ -63,8 +62,7 @@ public class MedicoController {
             Medico medico = optionalMedico.get();
             Paciente paciente = optionalPaciente.get();
 
-            if (medico.getNomeMedico().equalsIgnoreCase(nomeMedico.trim()) &&
-                    medico.getCpfMedico().equals(cpfMedico.trim())) {
+            if (medico.getCpfMedico().equals(cpfMedico.trim())) {
 
                 String diagnosticoPaciente = iaService.obterDiagnostico(paciente.getSintomasPaciente(), paciente);
                 model.addAttribute("idPaciente", paciente.getId());

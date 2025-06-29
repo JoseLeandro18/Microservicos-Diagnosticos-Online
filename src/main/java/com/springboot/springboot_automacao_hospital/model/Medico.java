@@ -19,8 +19,17 @@ public class Medico {
     private String nomeMedico;
 
     @Column(nullable = false)
-    private String cpfMedico;
+    private String emailMedico;
 
     @Column(nullable = false)
-    private Long codigoMedico;
+    private String sexoMedico;
+
+    @Column(nullable = false)
+    private String telefoneMedico;
+
+    @Column(nullable = false)
+    private Integer idadeMedico;
+
+    @Column(nullable = false)
+    private String cpfMedico;
 }

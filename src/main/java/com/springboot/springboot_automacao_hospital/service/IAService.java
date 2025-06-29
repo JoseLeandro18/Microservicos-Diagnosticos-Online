@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class IAService {
 
-    private final String API_KEY = "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";
+    private final String API_KEY = "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";
     private final String API_URL = "https://openrouter.ai/api/v1/chat/completions";
 
     public String obterDiagnostico(String sintomasPaciente, Paciente paciente) {
@@ -28,7 +28,7 @@ public class IAService {
 
         JSONArray messages = new JSONArray();
         messages.put(new JSONObject().put("role", "system").put("content", "Você é um médico que irá diagnosticar doenças baseado nos sintomas do paciente e indicar um médico para o paciente poder realizar a consulta pessoalmente."));
-        messages.put(new JSONObject().put("role", "user").put("content", "Olá meu nome é: " + paciente.getNomePaciente() + " e meus sintomas são: " + sintomasPaciente));
+        messages.put(new JSONObject().put("role", "user").put("content", "Olá meu nome é: " + paciente.getNomePaciente() + "sou do sexo:" + paciente.getSexoPaciente() + " e meus sintomas são: " + sintomasPaciente));
 
         json.put("messages", messages);
 

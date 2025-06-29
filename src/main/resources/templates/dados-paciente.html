@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dados paciente</title>
+    <link href="consulta.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1 class="title">Dados paciente</h1>
+
+    <div class="formContainer">
+        <div>
+            <h2>ID:</h2>
+            <label class="labels">
+                <textarea class="inputs" readonly th:text="${idPaciente}"></textarea>
+            </label>
+
+            <h2>Nome:</h2>
+            <label class="labels">
+                <textarea class="inputs" readonly th:text="${nomePaciente}"></textarea>
+            </label>
+
+            <h2>CPF:</h2>
+            <label class="labels">
+                <textarea class="inputs" readonly th:text="${cpfPaciente}"></textarea>
+            </label>
+
+            <h2>Telefone:</h2>
+            <label class="labels">
+                <textarea class="inputs" readonly th:text="${telefonePaciente}"></textarea>
+            </label>
+        </div>
+
+        <div>
+            <h2>E-mail:</h2>
+            <label class="labels">
+                <textarea class="inputs" readonly th:text="${emailPaciente}"></textarea>
+            </label>
+
+            <h2>Sexo:</h2>
+            <label class="labels">
+                <textarea class="inputs" readonly th:text="${sexoPaciente}"></textarea>
+            </label>
+
+            <h2>Sintomas:</h2>
+            <label class="labels">
+                <textarea class="inputs" readonly th:text="${sintomasPaciente}"></textarea>
+            </label>
+
+            <h2>Diagnóstico da IA:</h2>
+            <label class="labels">
+                <textarea class="inputs" readonly th:text="${diagnosticoPaciente}"></textarea>
+            </label>
+        </div>
+
+    </div>
+
+    <div class="buttons">
+        <a href="/consulta-medico" id="btnCadastro">Voltar</a>
+    </div>
+</div>
+</body>
+</html>

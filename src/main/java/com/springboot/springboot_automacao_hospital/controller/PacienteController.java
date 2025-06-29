@@ -41,8 +41,7 @@ public class PacienteController {
     }
 
     @PostMapping("/consulta-paciente")
-    public String consultarPaciente(@RequestParam String nomePaciente,
-                                    @RequestParam String cpfPaciente,
+    public String consultarPaciente(@RequestParam String cpfPaciente,
                                     @RequestParam Long idPaciente,
                                     Model model) {
 
@@ -52,7 +51,7 @@ public class PacienteController {
             Paciente paciente = optionalPaciente.get();
 
             // Verifica se nome e CPF batem
-            if (paciente.getNomePaciente().equals(nomePaciente) && paciente.getCpfPaciente().equals(cpfPaciente)) {
+            if (paciente.getCpfPaciente().equals(cpfPaciente.trim())) {
                 String diagnostico = iaService.obterDiagnostico(paciente.getSintomasPaciente(), paciente);
                 model.addAttribute("paciente", paciente);
                 model.addAttribute("diagnostico", diagnostico);

@@ -8,17 +8,41 @@
 <body>
 <div class="container">
     <!-- FORMULÁRIO DE NOVO CADASTRO -->
-    <div class="formContainer" id="formCadastro">
-        <h1 class="title">Cadastro de Médicos</h1>
+    <h1 class="title">Cadastro de Médicos</h1>
+    <div>
         <form method="post" th:action="@{/cadastro-medico}">
-            <label class="labels" for="nomeMedico">Insira seu nome completo:</label>
-            <input class="inputs" id="nomeMedico" name="nomeMedico" required type="text">
+            <div class="formContainer" id="formCadastro">
+                <div>
+                    <label class="labels" for="nomeMedico">Nome:</label>
+                    <input class="inputs" id="nomeMedico" name="nomeMedico" required type="text">
+                    <label class="labels" for="emailMedico">E-mail:</label>
+                    <input class="inputs" id="emailMedico" name="emailMedico" required type="email">
+                    <label class="labels" for="cpfMedico">CPF:</label>
+                    <input class="inputs" id="cpfMedico" name="cpfMedico" required type="text">
+                </div>
 
-            <label class="labels" for="cpfMedico">Insira seu CPF:</label>
-            <input class="inputs" id="cpfMedico" name="cpfMedico" required type="text">
-
-            <label class="labels" for="codigoMedico">Insira seu código:</label>
-            <input class="inputs" id="codigoMedico" name="codigoMedico" required type="text">
+                <div>
+                    <label class="labels" for="idadeMedico">Idade:</label>
+                    <input class="inputs" id="idadeMedico" name="idadeMedico" required type="text">
+                    <label class="labels" for="telefoneMedico">Telefone:</label>
+                    <input class="inputs" id="telefoneMedico" name="telefoneMedico" required type="text">
+                    <div class="sexo-opcoes">
+                        <label class="labels">Sexo:</label>
+                        <label class="sexo-opcao" for="sexoMasculino">
+                            <input class="inputs" id="sexoMasculino" name="sexoMedico" type="radio" value="masculino">
+                            <span>Masculino</span>
+                        </label>
+                        <label class="sexo-opcao" for="sexoFeminino">
+                            <input class="inputs" id="sexoFeminino" name="sexoMedico" type="radio" value="feminino">
+                            <span>Feminino</span>
+                        </label>
+                        <label class="sexo-opcao" for="sexoOutro">
+                            <input class="inputs" id="sexoOutro" name="sexoMedico" type="radio" value="outro">
+                            <span>Outro</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
 
             <div class="buttons">
                 <button id="btnCadastro" type="submit">Cadastrar</button>

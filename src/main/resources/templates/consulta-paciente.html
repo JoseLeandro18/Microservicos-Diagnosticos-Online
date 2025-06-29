@@ -3,25 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Consulta</title>
-    <link href="consulta.css" rel="stylesheet">
+    <link href="consulta-paciente.css" rel="stylesheet">
 </head>
 <body>
 <div class="container">
     <h1 class="title">Consulta Médica</h1>
 
     <div class="formContainer">
-        <label class="labels" for="idPaciente">ID do paciente:</label>
+        <h2>ID do paciente:</h2>
         <input class="inputs" id="idPaciente" readonly th:value="${paciente.id}" type="text">
 
         <h2>Diagnóstico da IA:</h2>
         <label class="labels">
             <textarea class="inputs" readonly th:text="${diagnostico}"></textarea>
         </label>
-
-        <div class="buttons">
-            <a href="/cadastro-paciente" id="btnCadastro">Cadastrar-se</a>
-            <a href="/login-paciente" id="btnConsulta">Consulta Online</a>
-        </div>
+    </div>
+    <div class="buttons">
+        <a href="/cadastro-paciente" id="btnCadastro">Cadastrar-se</a>
+        <a href="/login-paciente" id="btnConsulta">Consulta Online</a>
     </div>
 </div>
 </body>

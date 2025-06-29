@@ -8,23 +8,51 @@
 <body>
 <div class="container">
     <!-- FORMULÁRIO DE NOVO CADASTRO -->
-    <div class="formContainer" id="formCadastro">
-        <h1 class="title">Cadastro de Paciente</h1>
+    <h1 class="title">Cadastro de Paciente</h1>
+    <div id="formCadastro">
         <form method="post" th:action="@{/cadastro-paciente}">
-            <label class="labels" for="nomePaciente">Insira seu nome completo:</label>
-            <input class="inputs" id="nomePaciente" name="nomePaciente" required type="text">
+            <div class="formContainer">
+                <div>
+                    <label class="labels" for="nomePaciente">Nome:</label>
+                    <input class="inputs" id="nomePaciente" name="nomePaciente" required type="text">
+                    <label class="labels" for="emailPaciente">E-mail:</label>
+                    <input class="inputs" id="emailPaciente" name="emailPaciente" required type="text">
+                    <label class="labels" for="cpfPaciente">CPF:</label>
+                    <input class="inputs" id="cpfPaciente" name="cpfPaciente" required type="text">
+                    <div class="sexo-opcoes">
+                        <label class="labels">Sexo:</label>
+                        <label class="sexo-opcao" for="sexoMasculino">
+                            <input class="inputs" id="sexoMasculino" name="sexoPaciente" type="radio" value="masculino">
+                            <span>Masculino</span>
+                        </label>
+                        <label class="sexo-opcao" for="sexoFeminino">
+                            <input class="inputs" id="sexoFeminino" name="sexoPaciente" type="radio" value="feminino">
+                            <span>Feminino</span>
+                        </label>
+                        <label class="sexo-opcao" for="sexoOutro">
+                            <input class="inputs" id="sexoOutro" name="sexoPaciente" type="radio" value="outro">
+                            <span>Outro</span>
+                        </label>
+                    </div>
+                </div>
+                <div>
+                    <label class="labels" for="telefonePaciente">Telefone:</label>
+                    <input class="inputs" id="telefonePaciente" name="telefonePaciente" required>
+                    <label class="labels" for="idadePaciente">Idade:</label>
+                    <input class="inputs" id="idadePaciente" name="idadePaciente" required>
+                    <label class="labels" for="sintomasPaciente">Sintomas:</label>
+                    <textarea class="inputs" id="sintomasPaciente" name="sintomasPaciente" required></textarea>
+                </div>
+            </div>
 
-            <label class="labels" for="cpfPaciente">Insira seu CPF:</label>
-            <input class="inputs" id="cpfPaciente" name="cpfPaciente" required type="text">
-
-            <label class="labels" for="sintomasPaciente">Insira seus sintomas:</label>
-            <textarea class="inputs" id="sintomasPaciente" name="sintomasPaciente" required></textarea>
 
             <div class="buttons">
                 <button id="btnCadastro" type="submit">Cadastrar</button>
                 <a href="/login-paciente" id="btnEntrar">Entrar</a>
             </div>
+
         </form>
+
     </div>
 </div>
 </body>
